@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "n8n": {
       "main": [
@@ -189,6 +189,12 @@
       ],
       "typeVersion": 1,
       "alwaysOutputData": true,
+      "credentials": {
+        "githubOAuth2Api": {
+          "id": "WeonWnYwein8MMUf",
+          "name": "GitHub account"
+        }
+      },
       "continueOnFail": true
     },
     {
@@ -271,7 +277,13 @@
         460,
         320
       ],
-      "typeVersion": 1
+      "typeVersion": 1,
+      "credentials": {
+        "githubOAuth2Api": {
+          "id": "WeonWnYwein8MMUf",
+          "name": "GitHub account"
+        }
+      }
     },
     {
       "parameters": {
@@ -290,7 +302,13 @@
         460,
         500
       ],
-      "typeVersion": 1
+      "typeVersion": 1,
+      "credentials": {
+        "githubOAuth2Api": {
+          "id": "WeonWnYwein8MMUf",
+          "name": "GitHub account"
+        }
+      }
     },
     {
       "parameters": {
@@ -392,7 +410,13 @@
         -1060,
         340
       ],
-      "typeVersion": 1
+      "typeVersion": 1,
+      "credentials": {
+        "n8nApi": {
+          "id": "zDvBJl7Ij1bzxoWq",
+          "name": "n8n account"
+        }
+      }
     },
     {
       "parameters": {
@@ -465,9 +489,13 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "staticData": null,
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2025-04-24T04:52:50.034Z",
-  "versionId": "b6fd8824-d818-44a0-958a-72d11e846086"
+  "triggerCount": 1,
+  "updatedAt": "2025-04-24T04:56:23.997Z",
+  "versionId": "4d3990ac-2bd2-4643-815b-4fff1ac606c3"
 }
