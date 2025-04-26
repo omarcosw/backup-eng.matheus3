@@ -49,7 +49,7 @@
       "main": [
         [
           {
-            "node": "empilhaÁudio",
+            "node": "transforma audio em binary",
             "type": "main",
             "index": 0
           }
@@ -228,7 +228,7 @@
       "main": [
         [
           {
-            "node": "getClient",
+            "node": "Wait1",
             "type": "main",
             "index": 0
           }
@@ -268,22 +268,6 @@
       "main": [
         [
           {
-            "node": "Prompts",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "NoOp.4",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "UnificaDados": {
-      "main": [
-        [
-          {
             "node": "fromMe",
             "type": "main",
             "index": 0
@@ -296,17 +280,6 @@
         [
           {
             "node": "Obtem",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Prompts": {
-      "main": [
-        [
-          {
-            "node": "UnificaDados",
             "type": "main",
             "index": 0
           }
@@ -368,17 +341,6 @@
         ]
       ]
     },
-    "NoOp.4": {
-      "main": [
-        [
-          {
-            "node": "UnificaDados",
-            "type": "main",
-            "index": 1
-          }
-        ]
-      ]
-    },
     "OpenAI Chat Model": {
       "ai_languageModel": [
         [
@@ -411,6 +373,50 @@
           }
         ]
       ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "getClient",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "transforma audio em binario": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "transforma audio em binary": {
+      "main": [
+        [
+          {
+            "node": "transforma audio em binario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "empilhaÁudio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-03-27T17:59:18.896Z",
@@ -426,7 +432,7 @@
         "messages": {
           "messageValues": [
             {
-              "message": "=Por favor, gere a saída no seguinte formato JSON:\n{\n  \"messages\": [\n    \"splitedMessage\",\n    \"splitedMessage\",\n    \"splitedMessage\"\n  ]\n}\n\nAs mensagens devem ser divididas de forma natural, afinal estamos conversando com um humano, não é mesmo?\n\nCertifique-se de que a resposta siga exatamente essa estrutura, incluindo os colchetes e as aspas.\n\n### Jamais separe uma mensagem vazia.\n\n### Certifique-se de que a resposta siga exatamente essa estrutura abaixo, deixando somente entre '*' para negrito e nunca fugindo das demais regras de markdown do whatsapp:\n\t\t\t- *negrito* (substitua '**' por '*')\n\t\t\t- _itálico_.(extremamente raro)\n\nSempre que você for mandar o link de compra do produto Segredo das Casas Incríveis, tem que colocar entre \"`\", ou seja, na seguinte formatação: https://hotm.art/segredosdascasas. Não coloque de outra forma que não seja essa. E sempre mande em forma de LINK"
+              "message": "=Por favor, gere a saída no seguinte formato JSON:\n{\n  \"messages\": [\n    \"splitedMessage\",\n    \"splitedMessage\",\n    \"splitedMessage\"\n  ]\n}\n\nAs mensagens devem ser divididas de forma natural, afinal estamos conversando com um humano, não é mesmo?\n\nCertifique-se de que a resposta siga exatamente essa estrutura, incluindo os colchetes e as aspas.\n\n### Jamais separe uma mensagem vazia.\n\n### Certifique-se de que a resposta siga exatamente essa estrutura abaixo, deixando somente entre '*' para negrito e nunca fugindo das demais regras de markdown do whatsapp:\n\t\t\t- *negrito* (substitua '**' por '*')\n\t\t\t- _itálico_.(extremamente raro)"
             }
           ]
         }
@@ -436,14 +442,14 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.4,
       "position": [
-        -620,
+        -400,
         140
       ]
     },
     {
       "parameters": {
         "httpMethod": "POST",
-        "path": "vendedora-fernanda",
+        "path": "vendedora-vitoria",
         "options": {}
       },
       "id": "76c78850-6870-46a6-b441-022c3b306e2d",
@@ -463,7 +469,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolCalculator",
       "typeVersion": 1,
       "position": [
-        180,
+        400,
         1520
       ]
     },
@@ -512,7 +518,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        460,
+        680,
         460
       ],
       "retryOnFail": true,
@@ -604,7 +610,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -2660,
+        -2440,
         1080
       ]
     },
@@ -620,7 +626,7 @@
       "type": "n8n-nodes-base.googleDocsTool",
       "typeVersion": 2,
       "position": [
-        360,
+        580,
         1520
       ],
       "credentials": {
@@ -641,7 +647,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.4,
       "position": [
-        -280,
+        -60,
         1580
       ],
       "credentials": {
@@ -655,7 +661,7 @@
       "parameters": {
         "content": "## PASSO 5 - ORGANIZA E ENVIA AS MENSAGENS PARA O CLIENTE",
         "height": 1034,
-        "width": 1784,
+        "width": 2164,
         "color": 6
       },
       "id": "7bf41ed1-e219-4f9b-b932-4676d6e42411",
@@ -677,7 +683,7 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
       "position": [
-        -400,
+        -180,
         480
       ]
     },
@@ -688,7 +694,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -20,
+        200,
         460
       ]
     },
@@ -699,7 +705,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        900,
+        1120,
         440
       ]
     },
@@ -712,7 +718,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        320,
+        540,
         140
       ]
     },
@@ -725,7 +731,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        680,
+        900,
         280
       ],
       "webhookId": "8a810ad6-4ecf-4781-aed8-7f2b295770dc"
@@ -742,7 +748,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        -140,
+        80,
         140
       ]
     },
@@ -755,13 +761,13 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        -620,
+        -400,
         480
       ],
       "credentials": {
         "openAiApi": {
           "id": "JEDsFEG2tytyjpeK",
-          "name": "ia-fernanda-n8n"
+          "name": "ia-vitoria-n8n"
         }
       }
     },
@@ -794,7 +800,7 @@
       "typeVersion": 1,
       "position": [
         -3960,
-        780
+        760
       ]
     },
     {
@@ -854,8 +860,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -3680,
-        1000
+        -3720,
+        1040
       ]
     },
     {
@@ -921,7 +927,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -1500,
+        -1280,
         1080
       ]
     },
@@ -934,14 +940,14 @@
       "type": "n8n-nodes-base.crypto",
       "typeVersion": 1,
       "position": [
-        -3140,
-        1220
+        -3120,
+        1240
       ],
       "notesInFlow": false
     },
     {
       "parameters": {
-        "tableId": "[IA] [VENDAS] [FERNANDA] - CLIENTES",
+        "tableId": "cadastros",
         "fieldsUi": {
           "fieldValues": [
             {
@@ -959,6 +965,14 @@
             {
               "fieldId": "sessionID",
               "fieldValue": "={{ $json.data }}"
+            },
+            {
+              "fieldId": "data_cadastro",
+              "fieldValue": "={{ $now.format('yyyy-MM-dd HH:mm')}}"
+            },
+            {
+              "fieldId": "evento",
+              "fieldValue": "Recuperação - Vitória"
             }
           ]
         }
@@ -968,8 +982,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -2960,
-        1220
+        -2940,
+        1240
       ],
       "credentials": {
         "supabaseApi": {
@@ -990,12 +1004,22 @@
           "conditions": [
             {
               "id": "4e77cc7c-48f4-4cbe-94e7-6d211db67002",
-              "leftValue": "={{ $('getClient').item.json.telefone }}",
+              "leftValue": "={{ $item(\"0\").$node[\"getClient\"].json[\"id\"] }}",
               "rightValue": "",
               "operator": {
-                "type": "string",
-                "operation": "notEmpty",
+                "type": "number",
+                "operation": "exists",
                 "singleValue": true
+              }
+            },
+            {
+              "id": "18fe53f2-d15b-474d-818c-b5615c7f2f89",
+              "leftValue": "={{ $item(\"0\").$node[\"getClient\"].json[\"telefone\"] }}",
+              "rightValue": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
               }
             }
           ],
@@ -1008,19 +1032,22 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -3340,
-        1080
+        -3320,
+        1100
       ]
     },
     {
       "parameters": {
-        "operation": "get",
-        "tableId": "[IA] [VENDAS] [FERNANDA] - CLIENTES",
+        "operation": "getAll",
+        "tableId": "cadastros",
+        "limit": 1,
+        "matchType": "allFilters",
         "filters": {
           "conditions": [
             {
               "keyName": "telefone",
-              "keyValue": "={{ $('camposIniciais').item.json.meta.telefoneCliente }}"
+              "condition": "eq",
+              "keyValue": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}"
             }
           ]
         }
@@ -1030,8 +1057,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -3540,
-        1080
+        -3520,
+        1100
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1157,22 +1184,6 @@
     },
     {
       "parameters": {
-        "mode": "combine",
-        "combineBy": "combineAll",
-        "options": {}
-      },
-      "id": "9d769d91-41e6-49e4-8813-4d2fc9a68d3b",
-      "name": "UnificaDados",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        -3040,
-        460
-      ],
-      "notesInFlow": true
-    },
-    {
-      "parameters": {
         "operation": "push",
         "list": "={{ $('camposIniciais').item.json.meta.telefoneCliente.toString() }}",
         "messageData": "={{ JSON.stringify({ \n    \"message\": $('Webhook').item.json.body.data.message.speechToText, \n    \"timestamp\": $now,\n    \"message_id\": $('camposIniciais').item.json.content.idMensagem\n}) }}",
@@ -1183,7 +1194,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2200,
+        -1980,
         880
       ],
       "credentials": {
@@ -1195,31 +1206,6 @@
     },
     {
       "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "aa4d5d29-e6f1-4bce-b5ff-4575b553a077",
-              "name": "systemMessageAgente",
-              "value": "=<prompt>\n\n  <!-- Instruções para o Agente -->\n  <instruções>\n    - Você é a Fernanda, uma agente especializada em vendas do curso Segredo das Casas Incríveis ou SCI. Sua missão é responder clientes por WhatsApp, oferecendo informações sobre os produtos, valores, auxiliando no processo de compra, quebrando objeções de forma lúcida e realizando cálculos de valores à vista ou parcelados quando solicitado.\n    - Você precisa ser mais convincente, questionadora, persuasiva e inspiradora. Seu objetivo é fazer o cliente perceber que ele precisa adquirir o curso, pois isso transformará sua vida e a vida de sua família. Mostre a ele que está prestes a construir a casa dos sonhos – o lar onde viverá pelo resto da vida com sua família, criando memórias inesquecíveis. Desloque-o da realidade atual para um futuro promissor. Faça com que ele se imagine, por meio das suas palavras, na casa construída, ao lado da família, celebrando momentos especiais – um churrasco no fim de semana, um banho de piscina, uma festa de aniversário. Instigue sua imaginação para que a decisão de comprar seja guiada pelas emoções.\n    - Seja educada, amigável e objetiva.\n    - Fale com poucas palavras.\n    - Varie a linguagem para evitar parecer robótica, mantendo clareza e eficiência.\n    - Utilize a data de hoje para se localizar: {{ $now.toUTC(-180) }}\n  </instruções>\n\n  <!-- Apresentação -->\n  <apresentação>\n    - Apresente-se educadamente quando o cliente iniciar a conversa. Se você que tiver iniciado a conversa, não se apresente. Veja pelo nome se a pessoa é homem ou mulher, na hora de se referir a pessoa.\n    - Dependendo do que for a mensagem do cliente, use um dos dois <modelo_de_aprensetação>\n\n  <!-- Exemplos de Apresentação -->\n  <modelo_de_apresentação1>\n    - \"{{ new Date().getHours() < 12 ? 'Bom dia' : (new Date().getHours() < 18 ? 'Boa tarde' : 'Boa noite') }}! Maravilha!\n\nO SCI vai se encaixar perfeitamente no que você precisa. O curso foi todo gravado dentro de canteiro de obras, mostrando cada detalhezinho para que você possa ser extremamente assertiva nas decisões e tudo mais.\n\nAlém disso tudo, você ainda terá um cupom de uso ilimitado com 5% de desconto em compras no site da ABC da Construção. Isso, sozinho, pagará o valor investido no curso.\".\n  </modelo_de_apresentação1>\n\n  <modelo_de_apresentação2>\n    - \"{{ new Date().getHours() < 12 ? 'Bom dia' : (new Date().getHours() < 18 ? 'Boa tarde' : 'Boa noite') }}! Aqui é a Fernanda. Como posso te ajudar?\n  </modelo_de_apresentação2>\n\n  <!-- Condução da Conversa -->\n  <condução>\n    - Responda de forma clara e objetiva sobre o produto.\n    - Não use muito emojis, apenas de vez em quando.\n    - Se o cliente só mandar um emoji, como por exemplo: \"👍\", não responda.\n    - Depois de algumas mensagens trocadas, pergunte se você pode enviar o link de compra para ele, e se ele disser que pode, mande o link: \"https://hotm.art/segredo-das-casas-incriveis-ma\".\n    - O link de compra deve ser mandado exatamente dessa forma: \"https://hotm.art/segredosdascasas\". Se for de outra forma, vai dar erro.\n    - Se o cliente mandar a mensagem \"Ok\", esse é o contexto da mensagem que você mesmo enviou para ele anteriormente: \"Oiii, tudo bem?\nAqui é a Fernanda do time de Construtores de Sonhos.\n\nO Engenheiro Matheus viu que você se cadastrou na Imersão, mas tem interesse em Reformar e, por isso, pediu para que eu ajudasse você a partir de agora.\n\nQuero te apresentar o Segredos das Casas Incríveis. É um curso feito para pessoas como você, que querem reformar ou estão na fase final dos detalhes de acabamento nas suas obras.\n\nMe manda um\n“ok”\naqui para eu posso continuar explicando tudo.\". Preciso que você continue a conversa explicando o produto para essa pessoa, USANDO POUCAS PALAVRAS, tendo em vista que ela deu um \"Ok\" para a sua primeira mensagem.\n\n    - Inclua informações sobre formas de pagamento ou promoções disponíveis, quando relevante.\n    - Se você ainda não tiver enviado o link de compra, finalize as interações com uma pergunta amigável e direta após o envio das informações solicitadas, evitando repetições. Se já tiver enviado o link de compra, não mande a pergunta.\n    <!-- Uso das Tools -->\n    <uso_de_tools>\n      - Quando o cliente perguntar sobre valores à vista ou parcelados, acione a tool \"calculadora\" e forneça os cálculos necessários.\n      - Quando o cliente perguntar informações específicas do curso, acione a tool \"infos\" e forneça para ele.\n      - Esse é o contato do suporte técnico: +55 43 9696-0408 ou acione a tool \"suporte\"\n    </uso_de_tools>\n\n    <!-- Venda Direta -->\n    <processo_de_venda>\n      - Quando o cliente estiver pronto para comprar, oriente-o sobre os próximos passos:\n        - \"Ótimo! Vou te mandar o link aqui em baixo 🥰\"\n    </processo_de_venda>\n  </condução>\n\n  <!-- Respostas a Dúvidas -->\n  <respostas_a_dúvidas>\n    - Responda de forma educada e direta. Exemplo:\n        - Cliente: \"Tenho quanto tempo de acesso?\"\n      - Resposta: \"1 ano de acesso\"\n  </respostas_a_dúvidas>\n  \n  <!-- Manejo de Objeções -->\n  <manejo_de_objeções>\n    - Princípios Gerais:\n      - Ouça a objeção com atenção, demonstre empatia e ofereça soluções.\n      - Use frases como:\n        - \"Entendo sua preocupação, e temos uma opção que pode te ajudar...\"\n        - \"Sei que o preço é importante, e por isso oferecemos parcelamento em até 12x\"\n  </manejo_de_objeções>\n\n  <!-- Limitações -->\n  <limitações>\n    - Não forneça informações fora do escopo de vendas do produto Segredo das Casas Incríveis.\n    - Não forneça dados de produtos que não estão na tool \"infos\".\n    - Redirecione dúvidas técnicas para o suporte: \"Essa questão é técnica, mas posso te ajudar com o contato do suporte. Quer que eu encaminhe?\"\n  </limitações>\n\n  <!-- Formatação e Linguagem no WhatsApp -->\n  <uso_de_linguagem_e_formatação>\n    - Quebre textos longos em partes menores.\n    - Evite parecer robótica; use variações na linguagem.\n    - Negrito para informações importantes:\n      - \"O SCI está disponível por *R$ 997,00*.\"\n  </uso_de_linguagem_e_formatação>\n\n</prompt>\n",
-              "type": "string"
-            }
-          ]
-        },
-        "includeOtherFields": true,
-        "options": {}
-      },
-      "id": "38415548-7cd3-4fbe-a41b-7ba6b5414a94",
-      "name": "Prompts",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -3120,
-        200
-      ],
-      "alwaysOutputData": false
-    },
-    {
-      "parameters": {
         "operation": "delete",
         "key": "={{ $('camposIniciais').item.json.meta.telefoneCliente.toString() }}"
       },
@@ -1228,7 +1214,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1000,
+        -780,
         1080
       ],
       "credentials": {
@@ -1250,7 +1236,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1800,
+        -1580,
         1080
       ],
       "credentials": {
@@ -1272,7 +1258,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2200,
+        -1980,
         1100
       ],
       "credentials": {
@@ -1289,7 +1275,7 @@
             {
               "id": "b7158aa0-84e0-44b1-8629-bf23fb4c0766",
               "name": "=messages",
-              "value": "={{ $json.message.map(buffer => JSON.parse(buffer).message).join('\\n') }}\n{{ (() => { \n    try {\n        return $('camposIniciais').item.json.content.quoted || \"\"; \n    } catch (error) {\n        return \"\";\n    } \n})() }}\n",
+              "value": "={{ (() => {\n  try {\n    const deleteMessage = $item(0).$node[\"Deleta\"].json?.message?.[0] || '';\n    const audioText = (() => {\n      try {\n        return $item(0).$node[\"empilhaÁudio\"].json?.text || '';\n      } catch (error) {\n        return '';\n      }\n    })();\n    return audioText || deleteMessage || '';\n  } catch (error) {\n    return '';\n  }\n})() }}",
               "type": "string"
             },
             {
@@ -1307,7 +1293,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -560,
+        -340,
         980
       ]
     },
@@ -1320,21 +1306,10 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        -1160,
+        -940,
         1300
       ],
       "webhookId": "7e21e91a-dee0-417b-a02b-6a71a97d88ab"
-    },
-    {
-      "parameters": {},
-      "id": "0bef51ff-39e6-43c9-b14b-d5dccdff34b3",
-      "name": "NoOp.4",
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        -3360,
-        400
-      ]
     },
     {
       "parameters": {},
@@ -1343,7 +1318,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -1140,
+        -920,
         880
       ]
     },
@@ -1371,13 +1346,13 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        -580,
+        -360,
         1500
       ],
       "credentials": {
         "openAiApi": {
           "id": "JEDsFEG2tytyjpeK",
-          "name": "ia-fernanda-n8n"
+          "name": "ia-vitoria-n8n"
         }
       }
     },
@@ -1496,7 +1471,7 @@
         "promptType": "define",
         "text": "={{ $('messages').all()[0].json.messages }}",
         "options": {
-          "systemMessage": "={{ $('Prompts').item.json.systemMessageAgente }}"
+          "systemMessage": "=<Instruções do Agente>\n  <Função>\n    <Nome>Vitória</Nome>\n    <Descrição>Closer de vendas do curso Segredo das Casas Incríveis (SCI), atuando no WhatsApp como um humano real. Fala curto, natural, sem formalidade e com fluxo de conversa de WhatsApp.</Descrição>\n    <DataAtual>{{ $now.toUTC(-180) }}</DataAtual>\n  </Função>\n\n  <Meta>\n    <Primary>Recuperar vendas usando conversa curta, leve, natural, humana e persuasiva sem parecer IA em nenhum momento.</Primary>\n  </Meta>\n\n  <Instruções>a\n    <Instrução>Fale SEMPRE com frases curtas, simples e divididas em várias mensagens</Instrução>\n    <Instrução><b>NUNCA</b> use ponto final (.) no final das frases ou palavras</Instrução>\n    <Instrução>Envie saudações de acordo com o horário local usando: {{ new Date().getHours() < 12 ? 'Bom dia' : (new Date().getHours() < 18 ? 'Boa tarde' : 'Boa noite') }}</Instrução>\n    <Instrução>Use letra minúscula no início de algumas frases de forma natural</Instrução>\n    <Instrução>Use risadas como \"kkkk\" ou \"haha\" apenas se for muito natural e se o cliente demonstrar esse tipo de comportamento</Instrução>\n    <Instrução>Use emojis de forma extremamente rara e apenas se ficar totalmente natural. Limite máximo: 1 emoji a cada 10 a 15 mensagens</Instrução>\n    <Instrução>Busque dados do produto apenas na tool \"infos\"</Instrução>\n    <Instrução>Quando o cliente pedir preço, pegue da \"infos\" o valor e as parcelas corretas. Nunca chute valor</Instrução>\n    <Instrução>Quando informar valor ou parcelas, adicione uma frase curta e persuasiva tipo: \"e ainda facilita demais no bolso\"</Instrução>\n    <Instrução>Quando o cliente pedir o link de compra, envie apenas o link puro, sem botão, sem formatação, sem texto extra: https://hotm.art/segredo-das-casas-incriveis-ma</Instrução>\n    <Instrução>Não envie valor ou link sem o cliente pedir. Se pedir, envie de forma natural e direta</Instrução>\n    <Instrução>Se o cliente mandar \"ok\" ou \"OK\" (case insensitive) sem contexto, entenda que está respondendo o disparo inicial e continue apresentando o curso de forma leve</Instrução>\n    <Instrução>Leia o contexto da conversa antes de responder. Nunca repita soluções já oferecidas</Instrução>\n    <Instrução>Quando surgir objeção, responda de forma leve, curta e lógica, respeitando o histórico</Instrução>\n    <Instrução>Exemplos:\n      - Se o cliente já viu o valor e reclamar de preço, traga benefício: \"entendo é um investimento que te ajuda a economizar muito mais na reforma\"\n      - Se o cliente falar que vai pensar, respeite e avance de forma sutil: \"massa fica tranquilo qualquer coisa tô por aqui\"</Instrução>\n    <Instrução>Sempre avance com perguntas curtas: \"acha que te ajuda a resolver sua reforma\" ou \"quer que eu te mostre mais sobre o que você vai aprender\"</Instrução>\n    <Instrução>Use gatilhos de urgência só se for muito natural, sem inventar prazos falsos</Instrução>\n    <Instrução>Encaminhe dúvidas técnicas para o suporte: \"essa parte é mais técnica quer que eu mande o suporte pra você\"</Instrução>\n    <Instrução>Se o cliente sumir, retome com leveza: \"conseguiu dar uma olhada no que te mandei\"</Instrução>\n    <Instrução>Finalize qualquer conversa reforçando parceria: \"fica tranquilo tô aqui pra te ajudar no que precisar viu\"</Instrução>\n    <Instrução>Se perguntarem se você é uma IA ou inteligência artificial, responda que não, que você é uma humana hehe</Instrução>\n  </Instruções>\n</Instruções do Agente>"
         }
       },
       "id": "1c60f6ca-e218-4cb7-9bd2-a326317146f9",
@@ -1504,7 +1479,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.7,
       "position": [
-        -20,
+        200,
         1080
       ]
     },
@@ -1568,7 +1543,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -2280,
+        -2060,
         1320
       ],
       "retryOnFail": true,
@@ -1586,7 +1561,7 @@
       "type": "n8n-nodes-base.googleDocsTool",
       "typeVersion": 2,
       "position": [
-        500,
+        720,
         1520
       ],
       "credentials": {
@@ -1595,6 +1570,110 @@
           "name": "Google Docs - marcosvini.daroch@gmail.com"
         }
       }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('camposIniciais').item.json.meta.telefoneCliente.toString() }}"
+      },
+      "id": "22c910d8-6a61-415d-bab6-d15a945304aa",
+      "name": "Deleta1",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -3220,
+        200
+      ],
+      "credentials": {
+        "redis": {
+          "id": "pjR1X6wBK1AX0GnK",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 3
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -2720,
+        1240
+      ],
+      "id": "67b1ecda-454a-4964-8566-89801106f5ad",
+      "name": "Wait1",
+      "webhookId": "c9984406-591e-4a50-a1ad-16f7bb521455"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.7,
+      "position": [
+        -2200,
+        860
+      ],
+      "id": "c851269f-c24f-421f-9276-2813275def1e",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "TJb8CFfEt4SRVUHE",
+          "name": "OpenAi - rec. de vendas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "base64",
+        "options": {
+          "fileName": "={{ $json.mediaType }}",
+          "mimeType": "=audio/ogg"
+        }
+      },
+      "id": "9e2e45dd-6c22-4118-959a-f27e63391cd7",
+      "name": "transforma audio em binario",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -2420,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://evolution.engenheiromatheus.com/chat/getBase64FromMediaMessage/{{ $item(\"0\").$node[\"camposIniciais\"].json[\"whatsapp\"][\"evo\"][\"nomeInstancia\"] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"whatsapp\"][\"evo\"][\"apikey\"] }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"message\": {\n        \"key\": {\n            \"id\": \"{{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"key\"][\"id\"] }}\"\n        }\n    },\n    \"convertToMp4\": false\n}",
+        "options": {}
+      },
+      "id": "3f5efeb3-b6c6-45ca-889a-31230c6d5ecf",
+      "name": "transforma audio em binary",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -2620,
+        860
+      ]
     }
   ],
   "pinData": {
@@ -1604,7 +1683,7 @@
           "headers": {
             "host": "webhook.engenheiromatheus.com",
             "user-agent": "axios/1.7.9",
-            "content-length": "954",
+            "content-length": "14004",
             "accept-encoding": "gzip, compress, deflate, br",
             "content-type": "application/json",
             "x-forwarded-for": "172.18.0.1",
@@ -1618,42 +1697,66 @@
           "query": {},
           "body": {
             "event": "messages.upsert",
-            "instance": "AUTHP4",
+            "instance": "eng-mateus-sci",
             "data": {
               "key": {
                 "remoteJid": "5527998210071@s.whatsapp.net",
                 "fromMe": false,
-                "id": "3EB0E934B83D633CB65DE4"
+                "id": "3EB022F2597ECC50EF99A5"
               },
               "pushName": "Marcos Santana",
               "status": "DELIVERY_ACK",
               "message": {
-                "conversation": "Ol;a",
+                "audioMessage": {
+                  "url": "https://mmg.whatsapp.net/v/t62.7117-24/19078243_1759410921668410_1824232847794706028_n.enc?ccb=11-4&oh=01_Q5Aa1QE2VumXrxBNyfu8GUJjuPC50fiVjQaheqNMP6c-6f3ouQ&oe=6834212E&_nc_sid=5e03e0&mms3=true",
+                  "mimetype": "audio/ogg; codecs=opus",
+                  "fileSha256": "O6UDx0dVPVMsI28XqYPnHY/SNTqziArgHoktajZnIhs=",
+                  "fileLength": "9079",
+                  "seconds": 4,
+                  "ptt": true,
+                  "mediaKey": "ceypXh4iu6z0c7fVZhF4birG5fi+hJAJzuPF4EivbLU=",
+                  "fileEncSha256": "yz0EtrdPkHD0LJ0cf4bwMxD5WrmJNVCVylOkSvf7slg=",
+                  "directPath": "/v/t62.7117-24/19078243_1759410921668410_1824232847794706028_n.enc?ccb=11-4&oh=01_Q5Aa1QE2VumXrxBNyfu8GUJjuPC50fiVjQaheqNMP6c-6f3ouQ&oe=6834212E&_nc_sid=5e03e0",
+                  "mediaKeyTimestamp": "1745658559",
+                  "contextInfo": {
+                    "disappearingMode": {
+                      "initiator": "CHANGED_IN_CHAT"
+                    }
+                  },
+                  "waveform": "AwgMCAQBAAAAAB45R1RfX1hWVFJMOzpPVlRNRkpMS0dANis2RkVDQEFKRzsfAAADFSk+REE+OyQUJjQ7R1ZVTw==",
+                  "viewOnce": false
+                },
                 "messageContextInfo": {
                   "deviceListMetadata": {
                     "senderKeyHash": "QXgMPvMw2/mSRQ==",
-                    "senderTimestamp": "1742510822",
+                    "senderTimestamp": "1745103929",
                     "senderAccountType": "E2EE",
                     "receiverAccountType": "E2EE",
-                    "recipientKeyHash": "EfAZpXPiJYI/MA==",
-                    "recipientTimestamp": "1741841788"
+                    "recipientKeyHash": "agofuDbQjVZlNw==",
+                    "recipientTimestamp": "1745475317"
                   },
                   "deviceListMetadataVersion": 2,
-                  "messageSecret": "3oMe0QRastG2MtkYUWxm1NURO3bVaiGq0WbdZskHBAg="
+                  "messageSecret": "DjfNGoQ2iBSt2TyiubHxNSgMBti1HcfnjJCvYh9WUnE="
+                },
+                "base64": "T2dnUwACAAAAAAAAAABwkRvFAAAAABk32HUBE09wdXNIZWFkAQEAD4C7AAAAAABPZ2dTAAAAAAAAAAAAAHCRG8UBAAAAff5TlgEYT3B1c1RhZ3MIAAAAUmVjb3JkZXIAAAAAT2dnUwAAgH0CAAAAAABwkRvFAgAAANRXBlKqCQkIDzIyKysqKCgoJygtLTMuKywsKiUoIiUkIh0iISolHCAiIBgqLDQxNysnODUsLSgyNzAxLDEvMDEvMCssKyUqJisvLy0mLickKB4mKiYpISglLSkjICg1JiwrJx0vKSUqKzArLyghKAsKDSsxLS8rKSwkJiYnIC8qNC4tMDY1NCszMSwyKiUvJCIqIiIeFBAbFxcUGRkXFRsaGh0rMCc2MTAvLzU1PC1IC+RVxnTau0BIBuN5xTT6wCZIBuN5yMlXwEiAAPo6bH/WdEs/iyiNMEiB4igRM+cz7+XYEzcZgovtjFT4pc7ZMwhK94YH7Ys5Op8oBvktp57CxZzsuZdBJSLwSIIpolTem0me75g7T47nQLB6D9TzuxDfDkFeAopWa1oOUlokg3NTKqDC3RuCp3ALvoBIgnZC2BVlmkWe3pIBH5WBeQOTfZxb2ifVydBLHFt5/eTS2Nc8sL770icWSIJygdg6Gnj+/vyOcdXNw8uUZu9zRahTCJ7GgP4pxbAefxTXqi5c3jMtOEiNl0zvrKsAamzAN42m/E+bSdrGTIozrd1MGllLF3OkJcpYOg6Szo2QJEiCRcG4byzN0MNyj1k9t51f3Ehl7JXm83oIPQrWglizsBG2HDMsIdBIgkAa3Mvj3XQIusy4ocuG1Iq05B+ARw5iBbeIV+Yjgbu7HLzKasLASIIXPtFhE84RfbTliOoUKs8tQUddV5KuuF/ImKliy2e7bq4XruI4akiB64DQp4ROKP8irGKPseKfVi4DRVgAFoEryE5KZt2gYN04FCipoEiL3apXqRjhD36XT4JL+L6tN0HSfe7ndfXET90bTFgKmFc51r7LQHRIgYasfhk+xt84ZxtDfOmDywtaR/eMW39oY8RZj+O0/6Qx6/zCVctjeEAHe7BIgW4zgmmSuYAHWVBDwT9KRmpcMY6mE4ABP7+asaCX0LHpUgQj1tjGbsjBinBIimCradoXyMw+On9Yl4KMNTxpA/9XTJkK5jbFqENpkq3HpnJ9bgcbHcXdBWXJrqemr2RIgZVA29TCN+OhIsrsB5hVNROMtD1Tx6X4orBiChmbza74qAvgXxnRhxsq6G6USIrY/6l8q8waCdZeq29nXcDkxSV+hpNb8KCNI4saGmTuOy2UtaRkqFbANUiBlpQ9awSayaGhiL6lE6N8TRDu2B0BsBuucIaPwx7uf4JGf2k3zGD2sfukSIGVQNvUQGyB5GQtp1D9JHip10Jvh+oRjuHjQwPAUBYhB0il8CKY/JLWdOBIiuWeZ+qop+Tqyu7xtW2ncxXHBIvN0lNJCm+CVAufuMfRFE10iHUz1FBIgZaVU2m1SDBPWCh/DsZ5N4CwCkIe+dSQ4mWV4QbfpF/wNrIGSIrGcRZpp4wOPm54A0iwkx/zw0injdtzSXRZWatplO7kXDWZVeNYrkgFQGbvZswV8dVwt7sASeW6xKq89caGmbe0luHl5kjFeJBIBUCYKGrWMr28fWsAV0mtWCr+IeYRb/pM0vUYgLAHMywNuoRASDLzkSEhiVuJ9E+aJLXY4uFL956l7TNNK/guCBU3S0o2XjufSDEk8HBusVFrJYCGtMtV3Sxf0R2TQ64q+2cD9zIAeOaNgEgEi3qwYaAgd+SJtVdIz3J8BuPCJrj3k0xxmHkjSCtJGIqj4AgaIy3cvBhBzudnUwHFnlugL9CZHbxm0fkxO0gnDGqyjJYUF/UOdTniWVVGmRwo5BYe/T8opxplrz60fEgEAlOz5tJiDoWM2xBYkzGBuVvkVlzIB1hHDnGdMssUub08UAuAiJi8+EgEYRyw123ydmFL6SKnImrRNqo4L9ioIcdpnMctSkHu6amLx5BIBCTcLdhPgblzoVLz4rILRxKRc0REQBdXnhAwSAO2pSsdJYMd7EL5LT/bPfAPFQnx9gCDSX2rVtnpmsBIAwwp4L9YOeY9EtJ6uT6z6bCTotem+r5TbgF3PkTKQwkgSB5EAKrhtnkN4EU2RbYhgXCzXMQinCRKDn0ToexckwdIAmCNj+9KLm14Gzk3wxu5C7j+IhUukpBImNe4xzYAA8qucPUIDWjGwHJIql2a/GtZc6m0X5tVNGeEcjA7ILExWbhImvncgI18sjSxcm3robW9XiYXGG0ehzzBZR5gzGVJyGgP5jafjBTVs+0OEkil7/DkWWw2gD360SjBZRVIdpdv58WMNPr37CGN+XwUWH4oZLrSYlPciIRLhAyLyDCYJlBIqhtRDZwfXTBuASV/upbhkZIt+dDXlfo4qh/NpfxBbTj2PRlWXjUUWfbfbO8Q82M6SKyLuNog13AlxhH/mPqOpSPwtwP0Y3U2GDOp4xV9bBjZ9EBu3WUdLaUSm7vIMIPJlZVajMMkQEifdTNqZaoTeqmCidEWmL88bvomIDEujGA4qbQxJLUrCkTSjcWLt07MeYBImRvEkqrQm6HhrRSu1ujt1GMVAbTfSOmRvGtc3IL6TNTmpPLYSsBIvZFL66ba0wJUQ6BpMsxDS95Sjdm2y0YiE8bkZ2bEhrfWJtDsYGBEqmbzvKaADUET9pgdJCpc3Ei/saE2BufxNuZaikX5Mz8V7oCZ9xFLXDTGObWgX7XdPmzCJzCY5D3LLunaoc3b8iO/QZJwSLbaXorgLvnU1r0389s1CVBXGjEz7bXI9BroM7NxJPm+/WQJo5YnIh4qj2xItofkLRbEPR/DQ2/npT7X2JUCEd/JsrHdroSQBSLdE1S5oHqlfsDTx2hBmaBIrfunexoXnsQ/o8YscjIwWupjgOn5K7HLTMuXQ6whNfBmwjYaAG/oSKkaXH4sBhI0gmGao70ltHgaiFS7WXn2hXKRtGXrx3JdkXSBYRWoaqru0X2K3e8XgnRIq+T4Yv4z4+lckUFI0kAhzavA77lfEQBoqauMbHs/8P/daNNnVsYNaoUWWc5trqQrBqOrH3nQSLVpTNcnU6wZy+Wmoj6O2WbofbEuy4FRozwTDqlMxrIgIr4hy5dSsXdMGhlxQnpASK1LZcZKHNkIMtWMPX/H8TgwtPcUFQWVl94CoXi+Zmyoco6KGsGpWVtTwZiaGlCuwEi3FU7PiJqL8lUra0813hPpGHaYbaDNsldyDOp6UC23/MFZsEFBQhlRfNZ1SLpCwsQ6VXIBw+uL8B3A+zx6XL3vOPHFJyRt+0wiESlBUBL1JCQeI4KAx5yZt/RGmEi5aqzeIYgRrZA32NrWFakSjBPiRoRJW3LgMS44j4Hte+KrOEwAjyLzdOgiDJgQSLXPK/BfxksYUrS5HVd1EV4mGQc21kfbyZTGbSIAT7yUJvPv5AYVZJEV6AHsOQtQSLPlWLc6k++PPKlfrpIRHgkXLepGB4Rq41HOvi4f2Ch1M38XvKMGUrLQ5wOBUKvXgEi4kS3BOPu5BnP+Pz123JDWBww5LBFgxX2Uw2WG2T7qzzxNOq6M0S0KidNJUw+ASLqqh1frAA0m3m3gd2C1ZdlLtTI+T1qQP5OXGLnjI8hFJBjyfZzllEccBXDXPHjqSLsqejhR3BoU11wwXKVTAirEGarBpv+b8dMkkGgLFFQOqWlCS8OGzvMWoEi8FEGo79eR5iYacdMwsxteEHkwLcCtwpVIw8DmEX+ccjVUuMZ08gDKyUhASLo3iqfw9IAh8dyyLhZy++0R1mEtYRRkg6X/cpgfOz9yaBrzAHo3iwpAski6eO3Op1o44UHvfgqmOd6TDrZI/CTOLbr3IzuAC/iobiFRrlxIusj9h0BxO2Bo2kjAv62EUXe5HYwiiB6ukR7ansirSuUE4A1GIV/f1IBIuiRwV1dcmDhSIu5FToXK8dUZN4NF4kgpZWb7i86zyg9zRidVIEinGfK1rZ3FyDVf3WUx5xy/MpEE4VUWlMGTvH7s61J2sy/rXULqVEawdsBInPSwbaxpAVlHFjsag5CkItIvBKlq9lKitBLUIpJBj2Iv1mdehGx+iI9EHazkQEid+k/GI+ty8aUgthOArzpU9nTwZuoRaJuqlzOpWHw0qG6Qgs+db9JMgBl0mvfASLayoQ7GJemT5b2rpa76OhPQUDSbOcTcQ2+7SFbbWGZ4E4CG8A0F+t7b+nhASL63mO7jQBrMHGRQYW0g5jmrnSGE3PUs0FzJnm327YWUw5Klb6BIpYpQC95lph5Ci/LZzSWn5+nHv/Bxb0r74KMQB77Ze+cx7cwecUF8dqfe+DhMSKoO8Y2AlveUGJgb22hNXT5+exQ0CL31jAX+rBqgQacO3SKF98fkSKkrxWNox9+E+Jvype4c7IsNlqHFSEVQJf1EN7LmayBac2NASKRVrjA0ykxttNBRzC1LxZ2l5oVilXMdkhCqe9yXnSRjaauJe/FfT0itlyT73a0QmxR/GXnhE1mpI1wYna/45M46e1Xh4Eiw12s4bJgIiYA4a8Cpw00xNcJZr6xi3cs7vRcQZvxMcIvRIiZYSLK1ciQ7/YEEVSmKp/+Acs3ofMBL8uRdwHAtMaYUNq8YelntUctfHiEISLPkk3+zY2Nkcgx5T/l4DBJ9kJNwGVfGpGYG3zfWaY8oh3/LGKBItyYRlTstTVjzfXUtSWzBVQlb2Og5MBv7bpGkk9eID2th4lTKrrOCYEi1WRWT7ex6l/9NgJzZ0gvEsJFTJLuT7QtrFUCes1ZorUi1ZbuSs6pocrz1ssRpc20ILG1/gDijI0czMICqCg/HHRH2COMDqIBItdsL2yWln7+Jak/qZEmcF6LEgn71mVZC40401ZgilZ0WA86wSLVvIPm+lO/uPlf6iSDBVPI6L5Fi5OcUPpA06NhIvMWH1w7VFDZdINulTcY8SLY+HaIygrJ08gYMonGAKWvfwq9UBNwiIm4ZKGGQN7Ttqe1mu9oZrVBIt3M7tlN0/QZ60uDS2MVhcD0WztI7eVqIAHRYnkIQz9AvgEi04SwJrgV2mvNTONyYYKDxAJI6OJKpbv4BXGMvk/MgSLQ+Cqfx4t6X2CxwRNhDmBi/BOgaijT04xL7fWJD+skj4xymd3LjIEivKFVXrZUdey3ufUk+uWsKNAMX73BRLRHm03k3i7JLe5Sde9jONDa2jxpmxIAgDt3vbLGASLTPsWz0Ut4fyZlPvhqJz1OFbxq+KxkgdQFeedAR0Gv17Lu8ioBItj1gcOvVcrVHwB38vvjUVZ2SV/uwcgKuXhNpQBINwxVzCkD+H9EnrIlAgEil0NAjZ98Vri7TNsqe4g1su0DeuBqAuDM+r943EvrB6hKcgK02VfNufz5ImvuLwuNt8Vm8ubhKLEfgRoMbrJ4N3z3SAAkZXT3IKej76hkbojxIA/3ETD55Dt7MGmJ2vkNN+QSzaUelWaF4Fnd5fEil6e36ePEfnz6CfuKQa5PYKzC0VBNuxAI9KdHfOXWysYzFij6ggndsrQ5ZxEzgSK2X0EskR/TQwPcn23B+aHq8L7G6jZyt9hRQDejOVgyimtBYXaxLeD5IsooLukgEXBuz4ucXimCGK1M1Wb+yC3ByEqKRZDa+nU/VfywySK2PnfGoh/T+gM+wmUd38drJ8owKHkXkhx2T8Ck5rt5Ie/O4lAZs7o4kSKsAa/8j9s/a9HmCJUYqmjYXTaw3AcQmijNEFFySDFIuP0n8y+M0qBXDvkiriOPJcDHB/0y7y/em2KyzkBfm2Ra3m76MfrSHSTmU8GydU9ellP6Udy0PdN4EbEivMqpSLbecaSF3FZWeiufE4lCOYFhCf8ap5N36NQtGuE/Kli4YMwiFtgRIr0+OPoInYT39bfOzF/cMiNSVj9VPLuOzSe9c+J5tfDnOIq3rLHKyJnCNS4TkIEir5wKZceyoE3DnssToEkI+iylG7UjUpHwhQskbigUZFNvXElo31VRIsy5OL4EbnglTwPU3VWjvWDJt49zCRfoIpkmQh+YQ4pBIrfazC9cPqKOO476hT9A0uD7+vH78tCV3ZLaampe7YMxjFoNeMXXQSLmDtaUCXNzcn4BIuKxrsstrouOSSLXB3Eyj71MRPT+6gEi0rwdTI8U1NZe3kVNu2PdNJFdXlxs7YrgE8G6PZ65nP0gaeUUJhlQTYExIp/EenSwM4MsTmbwv4lpXDJfMNwfQu0NKKNlhj5LrhK8wn0smNoLJdnF21JMsjeLASKer1jJsFvmPDEnzyEM1Vy1PSzKbTt4fYMuPbiU8hQEm8TvJUmq0IzFP3n0USKONV/OnawDWzP8HYfWusVyqRAz0vYzg0KhyxJ246UMaV63UC5u4JSiBHE+D4kBIoDkTMaZeWa+ZGwAhKscGEOAfevdrRqcyNKL0MkVnRJkO46HFGjOskuKwSINp1wYFg4Jy2viMZoAAVALWvSa55fVZckVXF5syhyUYK80X2jcz/nBIhG6MfdgQBCvw0s+11JvYJUXUQU4Wnp77Fcvy+cRZG+0Gei8ANO10xMVwWkiEj9aK31SzWK97OeRjgXI3gosxV3Ninjgxre68D9ZTcBLDaUiEi/PVeUQNveCeEYmmVa6NlMliBGGYfBD/UJmxwDsZHhqtLybgSIRotaBrGAwz3XHj7F7LWsTVaWWwTZO/lSkwDBGPBpsLwgVjy4BIkmA9toKxJdpI5XEiaILqttSpmGkfGQt5D9bQm0XuGh6C96g0C0lIgrsp2MhIYmfhEg74uW1PWjnFNnu/TK7xbVEw/klg+EihrWM5TGf8NbBmvIhbzHZTmJrCsrF5f/wPJ43aelgSTSZvPleSISnI850RNdFASKKIQeUni8S/e7l8+C3Hd5R6uTmXU3VNT0l82fg9c5I3dgQMWxBxX+5ASJ/hVjwhIN1K6GommQreqckD4R/dfIJ9/Gz6fCByMXwSTcfliSRtd8+nCim9ZnThXK+KUEikU1dkOMu1jRQFYJOFY10yJ5wyYVPpYrFbfhU+/1wNAU23l46LAqemDLgNLoRIqoSCthhXlII9AHWuQ9g5qdOT4v6x7M1ekLaUW/Ypf0220bNHGwCAjEPWHO9IppWTNs6SMha/lchWxDxaj6UBpCWMi9s+sK2xdo/knJN3mxyN3sAFeeHpkzdEcoBIpZsj42PP08isDHEvntMJC1Deoop3cAHb2d0bt1z05He/hf+Gxp5W+pNBQvmUv3SbYRPC/t5IqF1MerLFRjTT5HQ6zCpSoKtAzOiqFe4AIXEap15d8+2doSCQgZB9xT0ocHEBH5M19v5EgEil5R31VBJBExMf/iH8ocQJvdM5YTDCenzZNqw2ft4waepdm+VFzS+0n1+6ZG5YF26B5oBIn8od7OU4pDTD1scr+LGTbb2dDYK+n6WRTYmvGg2rAt3ypDjvTLg/Yms4SKGhTCoaYfoj03YMMcKToFrcYTmkeDWTHu1eV5WQLxmIc7os3PuK6p/gTEqxX+iPzD5QSKG5Kz0X72mCTtWHOzrzeFJgOXNdY6cOt6X1vZQLqsY3TiWYd2ZQpggq6XzfpQI9kEijw8ixw+soeEX7ieJyg9VHoXzCXf2V+bnB8L+YGb1b7c02EfmJgzrEM3UMSKWKtghYRTd5roUbuQCFh780kDkeGU4zCiZasnogK1V0uMn+8QVS6t3EF8IGriw46cRIqYvEC/59hWXa0uTqahElJjZQFtHdJLlg6Fy7vI7v7t2kntSr4ZoLcgRIrTYWSaURaWqsbcm+RH0fp2+Ut7xLbR5oTTs8uxdqYEdtqMiASK6jNVYHYy58BPlIfw4NAuRJYiRuJYOEoB8Psx2uUqAfH9YPTVcyG9qvxjzYoLRIroKCt/WGddMg+T1cqrObpSyGkaeH3oeylyqALP3BpY6ZsuBIrGWctCg9+EYS8mGFc1s1z66YHqsFjVyESg5IoghP2L2ASKj9zQ49Y02xeu4LwzgluHIpothq5qEdrXk70gJK75IJQqMNcETjLS+ASKIXq1YNE6Tl3FS5K72PFJcFZev/ufuxB24KN/vc1YannEic+LPD0mCyzSRFKUI5LG8j6Y5LC+OVljzbfwd8B218SWxIm/CmhzRaI4aEmLr8y9qMFdGmv0sXprV/bd4+gyBIBF2W9seYmRYviWOt39vrl6g2REgELsy4XcB65nPTbXcm2kBIKYXYcCJ3MepuBfBSNFBlyovNDYfMh/ghhHFIA/kVzVz3MEyYkLYXXVZDgN2wRb5VVEgDuqi4W9fS2sIMuHaHNgob0609XHfASANu/EnjTX4y04Q/FvBqAOCvH5hIA278VTvIYOf/pBXXlQgh0OW3MY1g3h/TSAMeUoK3uW7vX32kwTGwXh7VQDZKdLzogEgCr8aiXzpq7BAQTr5eL5lSlQdj4RsGSAJU10jfYsOuP/DQddjcNd3WoTvASBUYz7z/fTCvF3UCWFlooNn7uXHQx1kPjKs2SBI3+lB9ol+1mZ3/3j+YRXXo2mtOYNbj+WBIATb3suWXaoM3pnrXkSEDRBSv8xNQZ0odWkgBCrMKwW5RqB5BH16qrJjWhaSGmfb6U5J4d07RSJkR3Qi8CtQcin6h58/K9mQ8eqN1ok48DACd7E3Hj0MzJCkDHhah3SWv8Uibxjhg/9gWMBaRW45Ifkrq/41dkLlE8W2dpaUN9pvWpvSZ3eWpcbExt1jicH0tJEiY+OM0FSTworTdmkEWLjDuuW9FLlueYhFoixO3185NsK1QVj8IqEiY2pScggSMA0cBkhnA7pGtITUv43M0fi644a9wtDmc0GGWT0/0xhBj5583vOZpFvLujJbvOEicSJ2/Vjrfiz0gaZ0ISf9vIewI/buJEh2XTQiPSM/L6qCyL1q/eC0qD8y50BdB2XRInnesxvVkhjQyFw7qPPGjhBJl5MZWdUTFpTXGkGirApkprhzhsqEIYPofABJYUxVInAY5mRG44lcpu2r4IsM16soMj8B0Riy7xuBCubY6NSE6ghczyzJiDBqS2k6HQEicMO2ysn2FQN+OXMukRZ3Z9SWktOk4tx8J0QapJIKmhFHBrPmdTutl6PQeWriASKA6j/1Xho4ugjPOldKn0i3/BuVR81/CW62aCCpsASDdhBC28INCoPRr/cvte9NCuBMf4+BIq+stDGSC7NcoQaandYELsaLVh/DH7DJCQPUJO2oAvG9kZBtXD6PbzymA1Zhd5j+A8wc5QEiykUpAmj8smu71Ek3WNPF3yBZhRtzwck7hT9t1ER2nMTt3gX/5EbulqpVybl3ajlvqK6hiMEeY5t79gEiul8EsMbiHD2WuhvY4/iQxZrAh/Qikd9yazzYsWmbsp64ApN5NnbxbBQdpgE9nZ1MABMAtAwAAAAAAcJEbxQMAAACwcaddLzInLSknNDE1MjQtKyYbFxkXKCcsMy0zKxkUKys2My0rKCouKS0qKyovKi0jLiUhSK9CnpR8JlRWD0kVe6sHmCIrwU+llzjzZ/OaGFFysmY9ux1Ie58LHWlAJcIXCQDpvIBIqpEwLDqijjQJzLwMRrm4oKDCwrdFCkU0lTa9QSCkqIJbIBHC9YBImvfvz/XXYs+TBY5yQIL5KSWDeIGQV3HqUNFYJyyfs1h95AM7EYBdjMnyVApImO5dMiv1kkhdhQp/d/IR7T2bM2Zp9/2q+iSHaobOq3ASi457hA+KqEia5SzcFP/vQ/giQt/dXVrDOXs3b8Adkag4eOMd0Bg0sx0ofJFJ+Eip4VYo6q4YdnBOVsmKE8bN2zcy75OZlF2bR9x4Q43dQ7uqlndeA0BZNx0JN56epJ+ejeBIq8jwXm+Pe29mi1RmWqzU+msVBI4S+sGcfzWZgDV+pm85krUGm2lCkmWVLvSxGaAgSK2QQ1wYeRnXNUUMtZlC9XusXTGw24TJWyKLrOYjf70arRUuZxM9HWTHn58oqMevxV0U6WBIphWy2CqnPY2zGUUga0bjsC3qt11v2vFg5vAEWnllMX/easdIM7y7u5REESnE3Izu8Eij/59+j5HLl/sNlnLnZj4mh28qEV3oAO5DUU1BTZwcPkYAiVUkNk/eV05CdL3uDEc64+BIoP8yVWFvxkNbnwW9SciMpbteZNpc3OHgVBJzDOmd7dBH+dJwEvQDfRc+HMBInGQlGowg+k66YPg6EfUxCdRyXkyQBQCq7I2E3B3aFMP7HqYD31cKDwmgSJnSvpxLjPzsS17MnBGvz5vqriNSms7UherchtZiSZOStEnzFIBIA/LgxGcTSZOqcFj02PH/DZ4CaZXnxbAqMbJIA/SsKSFREGSYjTkPbJDa+a1uV5zzwEgD51R5eGJUiQ1FobJf7abeD+ttQlj6vnhIA76KsniBImRT3ZMNunLRZ/MbH880N0iZWn7W1GVnuMmUxdoWDl6PAKk+daq7mev2or/+Kd22O96yaHIgaNBImSgMpHcdfAN2h/rNzsb96LRbHn57d/0DvLLUrzgI9AY6FvaE/0BInNYGryXfORyGA+1N1dmNf2Qbfcf03pJpivfG0EKUKEigoFS29GT+hFnZYEia57fC833WcaWk3YB8bt3Pv0qB/ubN/GNIdZvCTUrySUw8UGBH+0dXkJo2Ab/IlGNdDEicTQnWffqXyUqfODeP12nNh8Ig06THQ0RSXOF+j9sGCetvYoez914O5M1M4EihzcmBG3BNfzMYrX34APdwZ77nDZr6dSrZT192WfM2NrjlqiK8TPMgnM1eLaDHyAIkekigryYdfkoYeYGEjwDx4M3h4PM474saCGMVgRxNyMjZXV05EBkdVEC/v7BIA1F46kFZdK6+OOft6C1KCXRobCR75Cv8SAJsM12oJIfvEKpsSYgmq1M/jchIgLIvh/bg/peIebdL/9EfcLWGFb1ABStcjoj8KVWAH9W8hGZtKitCml5gSKdqG0AvVyo5unXl6b9b5Y4a7cPCVQnHhSE8+2RazCMt4OyLFEaDy1Xv+kiysvYyaAQ8foo9h5+loa3P+BWcRsH1GOWSNsnsY5F8SVn8/B7qRxpd53Jn0I/3IsiF5BqJYEi4UF5cEAq5grIi49MdIqf1wlAaSWfszKNP1BK4VAupFosAMW9XY187s50bxliBX7QAgUizJo5XKB2vXz8OYHhhA3swLf7jmIiJgjdVIQMKmLy0fZn36igJpSFA1Ck2YEisXHJ0DvwHiEu3/LamDZaqZjjKcQIdQF0RBB8L/Glh0pq+ETNizHKhWCBIpsJCTYYHAOLAz4eQp9HvXHVg7a3hzBSpHycMzy5Uwj9p/oxoumzgSKbkEQWCmparSUVTTqYg3mwxYnBt2Vw9SNIAjMRGFoxFZ4sa2g/QBprASK2XwSo/EpGgjvF2p5NN0MwCgXlflDsDwqVuC60W4JlqQIgIH2JvRegum3KswEiw4fX+nNg/lQZQTk5Zw43+xyJk2xv+CIEzS5OdvqKykvveliYhn4R2SLM42iB6YyPubsi585WgO8mVHmkA2cdW+vhPbDIQCoPkRZBxn7jgvNJhDrSdSLOelFY7L7AuBLLRAUAmAIzThWUgdhJRgIXyMI79qRaWBR34xQ35A/swSLMz2fN6WzLaCzMwt1dGnrNpx+fcfFdmhv30LL4q7PCYxQfrS3H9sms0wEi1Nv9JScSfdh5N3v3hyj8SoFWHx4jQOKZw82f3ZvIbUURBHpxSCP5hgEi20+R1NTs1QSuw04qAPmrh3EO6dOD0LF19CLX8/5iL2YiSkH2GnocOOVcv5NdQSLK1H7APWtkYJFoQ6ADP6W/nsXx28UAjtBGTbB+sSEwZZKBIU4kTiyxgSLS4SyrTba0V75/nRjNTnEfeQwvPU1G07eK2D74jB0wa42neQpwa6pRwajIgSK+W8T6H+hWuGqLZQ3szKet5Qv0vvfvn2TGRPR+ee+HxK4BIpYoHpq0Ch2qm+QnujxKeIDkUfGxKPVhYY8/FLBpKm4xZrmRbePjSFu8AhTKfSKSQrV7qDKAXMa5JkESQTEI/14a/8hYzhWqqgk8fSulZJ3EJZEiePV1jGByKjYKN2ne1tsXCR1qZwASeCVvdKiH0qkSseA=="
+              },
+              "contextInfo": {
+                "disappearingMode": {
+                  "initiator": "CHANGED_IN_CHAT"
                 }
               },
-              "messageType": "conversation",
-              "messageTimestamp": 1743192672,
-              "instanceId": "666c18d1-3db9-48f3-9049-c3761f0788f8",
+              "messageType": "audioMessage",
+              "messageTimestamp": 1745658561,
+              "instanceId": "e1768af6-ae85-4f0b-83fb-e2dccab0402c",
               "source": "web"
             },
-            "destination": "https://webhook.engenheiromatheus.com/webhook/vendedora-ana",
-            "date_time": "2025-03-28T17:11:12.620Z",
+            "destination": "https://webhook.engenheiromatheus.com/webhook/vendedora-vitoria",
+            "date_time": "2025-04-26T06:09:21.262Z",
             "sender": "5515991266755@s.whatsapp.net",
             "server_url": "https://evolution.engenheiromatheus.com",
-            "apikey": "81A8E8BCA3EB-4DCD-ABE8-8404D069DEFA"
+            "apikey": "429FD5EB5B9E-42A1-B2BD-41D5C62F0312"
           },
-          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/vendedora-ana",
+          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/vendedora-vitoria",
           "executionMode": "production"
         }
       }
@@ -1665,6 +1768,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-04-07T16:55:11.055Z",
-  "versionId": "41ed32d8-801e-4577-bfcf-3462da1c2a77"
+  "updatedAt": "2025-04-26T09:16:35.475Z",
+  "versionId": "a6bcb122-757b-4521-8db0-bf843fbb5495"
 }
